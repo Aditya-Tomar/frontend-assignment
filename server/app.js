@@ -28,7 +28,18 @@ app.enable('trust proxy');
 
 app.post('/api/fetchStockData', (req, res) => {
     // YOUR CODE GOES HERE, PLEASE DO NOT EDIT ANYTHING OUTSIDE THIS FUNCTION
-    res.sendStatus(200);
+    const {stockSymbol, date} = req.body;
+
+    axios.get(`https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${date}/${date}?limit=10&apiKey=${process.env.ACCESS_TOKEN}`).then( stockData => {
+        if(stockData.status >= 400 && stockData.status < 500 ){
+            throw new Error("Error Occured");
+        } else {
+            res.status(200).send({result: stockData.data.results, status: stockData.data.status});
+        }
+    }).catch(err => {
+        console.log(err);
+        res.status(404).send("Error occured");
+    })
 });
 
 const port = process.env.PORT || 5000;

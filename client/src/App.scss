@@ -1,0 +1,88 @@
+.display-flex {    
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.main-container {
+    height: 97vh;
+    flex-wrap: wrap;
+}
+
+.form-container {
+    @extend .display-flex;
+    margin: 15px;
+    border: 2px solid rgb(177, 177, 177);
+    border-radius: 5px;
+    min-height: 40%;
+    min-width: 15rem;
+}
+
+.form {
+    @extend .display-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 15px;
+}
+
+.form label {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.form input {
+    outline: none;
+    border: transparent;
+    padding: 5px;
+    border: 1px solid rgb(205, 205, 205);
+    margin-right: 10px;
+    font-size: 16px;
+    min-width: 12rem;
+}
+.form button {
+    background: 0;
+    border: 2px solid #b8b3b3;
+    border-radius: 20px;
+    min-width: 14vw;
+    min-height: 5vh;
+}
+
+.data-container {
+    display: flex;
+    justify-content: center;
+    min-width: 52vw;
+    min-height: 97vh;
+    border-left: 2px solid black;
+}
+
+
+.data-table-wrapper table, th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid;
+    min-width: 3rem;    
+    position: relative;
+    top: 30%;
+}
+
+.input-field-wrapper {
+    @extend .display-flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.input-field-wrapper span {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+@media screen and (max-width : 1116px){
+    .data-container {
+        border-left: none;
+        border-top: 2px solid black;
+    }
+}
